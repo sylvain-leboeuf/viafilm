@@ -3,8 +3,12 @@ A React project by Sylvain L.
 
 ## Interface
 The interface shows a list of recent popular movies. 
+
 Click on the Search icon in the header to search for a movie title.
+
 Click on the "Mer info" button to show a detailed view card.
+
+Click on the "Viafilm" logo anytime to go back to the list of recent popular movies. 
 
 ## Credits
 This was build from scratch in React by Sylvain L., including :
