@@ -61,7 +61,7 @@ const DetailView = ({ movieID, apiKey, detailViewChange }) => {
                   </div>
                   <div className="duration">
                     <img src={durationIcon} className="duration-icon" alt="Tid" />
-                    {Math.floor(movie.runtime / 60)} {' h '} {movie.runtime % 60} {' m '}
+                    {Math.floor(movie.runtime / 60)} {' t '} {movie.runtime % 60} {' m '}
                   </div>
                   <div className="tagline">{movie.tagline}</div>
                 </div>
