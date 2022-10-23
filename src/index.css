@@ -1,13 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Ubuntu', 'Helvetica Neue', Arial, sans-serif; 
+  font-weight:400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:#0c0d0f;
+  background: linear-gradient(0deg, #0c0d0f 0%, #14161b 100%); 
+  color:#fff;
+  font-size:3vw;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.button {
+  display: block;
+  padding: 0.34em 1.2em;
+  width: fit-content;
+  margin: 0 auto;
+  background:#ff0031;
+  background: linear-gradient(0deg, #e1002b 0%, #ff0031 100%); 
+  font-weight:700;
+  border-radius: 8px;
+}
+
+.header, .list, .footer {
+  position:relative;
+  z-index:20;
+}
+
+.header .nav .icons:hover, .button:hover, .search-icon-small:hover, .header .nav h1:hover, .close-icon:hover, .detail-close:hover, .list .card .poster:hover {
+  cursor:pointer;
+}
+
+.header .nav {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .nav h1 {
+  width:32%;
+  margin:4%;
+}
+
+.header .nav .icons {
+  width:10%;
+  margin:4% 5%;
+  display:flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header .nav .icons img {
+  padding:5%;
+}
+
+.header h2 {
+  font-size:2em;
+  text-align: center;
+  color:#abb4c3;
+  background-color: #abb4c3;
+  background-image: linear-gradient(30deg, #7f848d, #cbd6e9);
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+  margin:6% 2% 12% 2%;
+}
+
+.popin {
+  position:fixed;
+  overflow-y:scroll;
+  float:left;
+  width:100vw;
+  height:100vh;
+  top:0;
+  z-index:200;
+}
+
+.search {
+  background:rgba(12,13,15,0.75);
+}
+
+.search form {
+  padding:4% 3% 12% 3%;
+  display:flex;
+  justify-content: space-between;
+  background: rgb(12,13,15);
+  background: linear-gradient(180deg, rgba(12,13,15,0.8) 0%, rgba(12,13,15,0.8) 67%, rgba(12,13,15,0) 100%); 
+  animation: fade-in-bottom 0.1s ease-in-out;
+  transition:all 0.1s ease-in-out;
+}
+
+.search input {
+  font-family: 'Ubuntu', 'Helvetica Neue', Arial, sans-serif; 
+  width:60%;
+  padding:4%;
+  border:0;
+  border-radius:16px;
+  background:#2f333d;
+  color:#fff;
+  font-size:1.4em;
+}
+
+.search input:focus {outline:none;}
+
+.search .search-icon-small {
+  width:10%;
+  padding:2%;
+}
+
+.search .close-icon {
+  width:5%;
+  padding:2%;
+}
+
+.list {
+  width:94%;
+  margin:0 auto;
+  padding:0 3%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.list .card {
+  width:44%;
+  margin:0 3% 12% 3%;
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  text-align: center;
+  background: #303338;
+  background: linear-gradient(0deg, #42454a 0%, #191a1d 40%, #191a1d 100%); 
+  border-radius:24px;
+  transition:all 0.1s ease-in-out;
+}
+
+.list .card .poster {
+  aspect-ratio:0.67;
+  border-radius:24px;
+  position:relative;
+  z-index:90;
+  background: #42454a;
+  background: linear-gradient(0deg, #42454a 0%, #191a1d 100%); 
+  color:#191a1d;
+  transition:all 0.1s ease-in-out;
+}
+
+.list .card .description {
+
+  padding:4% 2% 6% 2%;
+  position:relative;
+  z-index:70;
+}
+
+.list .card .description h2 {
+  font-size:1.1em;
+  font-weight:700;
+  margin:2% auto;
+}
+
+.list .card .description .rating-icon {
+  font-size: 0.9em;
+}
+
+.list .card .description .rating-icon {
+  display:inline;
+  width: auto;
+  height: 0.8em;
+}
+
+.list .card .more-info {
+  position:relative;
+  z-index:80;
+  font-size:1.4em;
+  margin-bottom:-10%;
+}
+
+.footer {
+  background:#14161b;
+  text-align:center;
+  padding:4%;
+}
+
+.footer span.small {font-size:0.8em;}
+
+.detail {
+  background:rgba(12,13,15,0.9);
+}
+
+.detail-close {
+  position:absolute;
+  top:0;
+  right:0;
+  padding:2%;
+  width:12%;
+  z-index:250;
+  animation: fade-in-bottom 0.1s ease-in-out;
+  transition:all 0.1s ease-in-out;
+}
+
+.detail-card {
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  align-items:center;
+  width:84%;
+  margin:4% 4% 0 4%;
+  padding:4%;
+  background: #3a3c41;
+  background: linear-gradient(0deg, #1d1f21 0%, #5c5f65 100%); 
+  border-radius:32px 32px 0 0;
+  z-index:20;
+  animation: fade-in-bottom 0.1s ease-in-out;
+  transition:all 0.1s ease-in-out;
+}
+
+.detail-card .poster-left {
+  width:45%;
+}
+
+.detail-card .poster-left .poster {
+  aspect-ratio:0.67;
+  border-radius:24px;
+  background: #42454a;
+  background: linear-gradient(0deg, #42454a 0%, #191a1d 100%); 
+  color:#191a1d;
+}
+
+.detail-card .infos-right {
+  width:50%;
+}
+
+.detail-card .infos-right h2 {
+  font-size:2em;
+  margin:0;
+  line-height:0.9em;
+}
+
+.detail-card .infos-right .date {
+  font-size:1.2em;
+}
+
+.detail-card .infos-right .genres {
+  margin:0.5em auto 1em auto;
+}
+
+.detail-card .infos-right .genres span {
+  text-transform: uppercase;
+  font-size:0.9em;
+  display:inline-block;
+  padding:0.1em 0.3em;
+  border:1px solid #abb4c3;
+  color:#abb4c3;
+  margin:0.4em 0.4em 0 0;
+  border-radius:3px;
+}
+
+.detail-card .infos-right .duration {
+  display:flex;
+  align-items:center;
+  font-size:1.2em;
+}
+
+.detail-card .infos-right .duration-icon {
+  height:1.4em;
+  width:auto;
+  margin-right:0.3em;
+}
+
+.detail-card .infos-right .tagline {
+  margin-top:1em;
+  font-size:1.2em;
+  font-style:italic;
+}
+
+.detail-card .recap {
+  width:88%;
+  margin:4% auto 0 auto;
+  padding:6%;
+  background: #121415;
+  background: linear-gradient(0deg, #0f1011 0%, #161719 100%);
+  border-radius:24px;
+  color:#fff;
+  font-size:1.2em;
+  line-height:1.6em; 
+}
+
+.detail-card .recap h3 { 
+  margin:0;
+}
+
+.detail .background { 
+  width:92%;
+  margin:0 4% 4% 4%;
+  border-radius:0 0 32px 32px ;
+  aspect-ratio:2.4;
+  background: #42454a;
+  background: linear-gradient(0deg, #191a1d 0%, #42454a 100%); 
+  color:#42454a;
+  animation: fade-in-bottom 0.1s ease-in-out;
+  transition:all 0.1s ease-in-out;
+}
+
+.detail .background-replacement { 
+  width:92%;
+  height:26px;
+  margin:0 4% 4% 4%;
+  border-radius:0 0 32px 32px;
+  background: #1d1f21;
+  animation: fade-in-bottom 0.1s ease-in-out;
+  transition:all 0.1s ease-in-out;
+}
+
+.detail .close {
+  position:relative;
+  z-index:80;
+  font-size:1.4em;
+  margin-top:-8%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:8%;
+}
+
+.detail .close .close-icon {
+  height:1em;
+  margin-left:0.3em;
+}
+
+@media screen and (min-width:640px) {
+
+  body {
+    font-size:1.8vw;
+  }
+
+  .header .nav h1 {
+    width:20%;
+    margin: 1.2%;
+  }
+
+  .header .nav .icons {
+    width:7%;
+    margin: 1.2%;
+  }
+  
+  .header .nav .icons img {
+    padding:10%;
+  }
+
+  .header h2 {
+    margin: 0 2% 6% 2%;
+  }
+
+  .search form {
+    padding: 4% 5% 12% 5%;
+  }
+
+  .search .close-icon {
+    width: 2.5%;
+    padding: 1%;
+  }
+
+  .search input {
+    width: 70%;
+    padding: 3%;
+    border-radius: 16px;
+    font-size: 1.6em;
+  }
+
+  .search .search-icon-small {
+    width: 5%;
+    padding: 1%;
+  }
+
+  .list .card {
+    width: 21%;
+    margin: 0 2% 6% 2%;
+    border-radius: 24px;
+  }
+
+  .list .card .more-info {
+    font-size: 1.1em;
+    margin-bottom: -7%;
+  }
+
+  .detail .close {
+    margin-top: -6.3%;
+  }
+
+  .detail-card {
+    width: 72%;
+    margin: 8% auto 0 auto;
+    padding: 4%;
+  }
+
+  .detail-close {
+    width: 8%;
+    margin: 4% 4% 0 0;
+  }
+
+  .detail-card .infos-right h2 {
+    font-size: 2.4em;
+  }
+
+  .detail-card .infos-right .date {
+    font-size: 1.4em;
+  }
+
+  .detail .background {
+    width: 80%;
+    margin: 0 auto 4% auto;
+  }
+
+  .detail .background-replacement {
+    width: 80%;
+    margin: 0 auto 4% auto;
+  }
+
+}
+
+@media screen and (min-width:1024px) {
+
+  body {
+    font-size:0.7vw;
+  }
+
+  .header .nav h1 {
+    width:10%;
+    margin: 2.6em;
+  }
+
+  .header .nav .icons {
+    width:3.5%;
+    margin: 2.6em;
+  }
+  
+  .header .nav .icons img {
+    padding:10%;
+  }
+
+  .header h2 {
+    margin: -3.2em 1.6em 3em 1.6em;
+  }
+
+  .search form {
+    padding: 4em 34em 12em 34em;
+    justify-content: center;
+  }
+
+  .search .close-icon {
+    width: 2em;
+    padding: 1em;
+  }
+
+  .search input {
+    width: 50em;
+    padding: 1em 1.5em;
+    margin:0 2em;
+  }
+
+  .search .search-icon-small {
+    width: 4em;
+    padding: 1em;
+  }
+
+  .list {
+    max-width:1500px;
+    width:98%;
+    margin:0 auto;
+    padding:0 1%;
+  }
+
+  .list .card {
+    width: 12.28%;
+    margin: 0 1% 3% 1%;
+    border-radius: 24px;
+  }
+
+  .list .card .description {
+    padding: 0.5em 0.5em 0.7em 0.5em;
+  }
+
+  .list .card .more-info {
+    font-size: 1.1em;
+    margin-bottom: -7%;
+  }
+
+  .detail-card {
+    width: 800px;
+    margin: 4em auto 0 auto;
+    padding: 12px;
+    font-size: 1.2em;
+  }
+
+  .detail-close {
+    width: 860px;
+    margin: 2em auto;
+    padding: 0;
+    left: 0;
+    right: 0;
+    float: left;
+    text-align: right;
+  }
+  
+  .detail-close img {
+    width: 6em;
+    display: inline;
+  }
+
+  .detail-card .poster-left {
+    width: 35%;
+  }
+
+  .detail-card .infos-right {
+    width: 56%;
+    margin-right: 2.5em;
+  }
+
+  .detail-card .infos-right h2 {
+    font-size: 3.2em;
+    margin-bottom:0.2em;
+  }
+
+  .detail-card .infos-right .date {
+    font-size: 1.6em;
+  }
+
+  .detail-card .infos-right .genres span {
+    font-size: 1em;
+    padding: 0.2em 0.4em;
+  }
+
+  .detail-card .recap {
+    width: 100%;
+    margin: 1em auto 0 auto;
+    padding: 2em;
+  }
+
+  .detail .background {
+    width: 824px;
+    margin: 0 auto 4em auto;
+  }
+
+  .detail .background-replacement {
+    width: 824px;
+    margin: 0 auto 4em auto;
+  }
+
+  .detail .close {
+    margin-top: -3.8em;
+  }
+
+}
+
+@media screen and (min-width:1500px) {
+
+  body {
+    font-size:11px;
+  }
+
+}
+
+@keyframes fade-in-bottom {
+  0%   {opacity:0;transform: translateY(-10px);}
+  100% {opacity:1;}
 }
