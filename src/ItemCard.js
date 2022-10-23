@@ -5,23 +5,22 @@ import noPoster from './images/no-poster.jpg';
 
 const ItemCard = ({ item, movieIdChange, detailViewChange, animationDelay }) => {
 
-  const handleDetailedViewChange = useCallback(event => {
+  const handleDetailedViewChange = useCallback(() => {
     movieIdChange(item.id);
     detailViewChange(true);
-  })
+  }, [movieIdChange, detailViewChange, item.id])
 
   const animationTimer = animationDelay*100;
 
   useEffect(() => {
     // fade in the card with a delay
     document.getElementById(`card-${item.id}`).style.opacity = "0";
+    const fadeInCard = () => {
+      document.getElementById(`card-${item.id}`).style.animation = `fade-in-bottom 0.05s ease-in-out`;
+      document.getElementById(`card-${item.id}`).style.opacity = "1";
+    }
     setTimeout(() => {fadeInCard()}, animationTimer);
-  }, []);
-
-  const fadeInCard = () => {
-    document.getElementById(`card-${item.id}`).style.animation = `fade-in-bottom 0.05s ease-in-out`;
-    document.getElementById(`card-${item.id}`).style.opacity = "1";
-  }
+  }, [item.id, animationTimer]);
 
   return (
 		<div className="card" id={`card-${item.id}`}>

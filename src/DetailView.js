@@ -10,26 +10,24 @@ const DetailView = ({ movieID, apiKey, detailViewChange }) => {
   const [movie, setMovie] = useState('');
   const [credits, setCredits] = useState('');
 
-  useEffect(() => {
-    getDetails();
-    getCredits();
-  }, []);
-
   const handleDetailedViewChange = useCallback(event => {
     detailViewChange(false);
-  })
+  },[detailViewChange])
 
-  const getDetails = async () => {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}`);
-    const data = await response.json();
-    setMovie(data);
-  }
-
-  const getCredits = async () => {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${apiKey}`);
-    const data = await response.json();
-    setCredits(data);
-  }
+    useEffect(() => {
+      const getDetails = async () => {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}`);
+        const data = await response.json();
+        setMovie(data);
+      }
+      const getCredits = async () => {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${apiKey}`);
+        const data = await response.json();
+        setCredits(data);
+      }
+      getDetails();
+      getCredits();
+  },[movieID, apiKey]);
   
   return (
 

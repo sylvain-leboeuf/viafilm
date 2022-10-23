@@ -24,8 +24,13 @@ const App = () => {
   const [movieID, setMovieID] = useState('');
 
   useEffect(() => {
-    showItems(displayMode);
-  }, []);
+    const showInitialList = async () => {
+      const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`);
+      const data = await response.json();
+      setItems(data.results);  
+    }
+    showInitialList();    
+  },[]);
 
     // function to search items on the database
     const searchResults = async (title) => {
